@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Table with Modal</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      padding: 5px 10px;
+      margin-right: 5px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      width: 60%;
+      max-width: 400px;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style> -->
+</head>
+<body>
+  <!-- <script src="script.js"></script> -->
+  <table id="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Country</th>
+        <th>Mobile Number</th>
+        <th>Actions</th>
+        <th><button  onclick="addRow()">Add Row</button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <button onclick="openModal(); populateModal(this.parentElement.parentElement)">Edit</button>
+          <button onclick="confirmDelete(this.parentElement.parentElement)">Delete</button>
+          
+        </td>
+      </tr>
+      <!-- Other rows... -->
+    </tbody>
+  </table>
+
+  <!-- The modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>Edit Data</h2>
+      <input type="text" id="fname" placeholder="First Name">
+      <input type="text" id="lname" placeholder="Last Name">
+      <input type="text" id="country" placeholder="Country">
+      <input type="text" id="mNumber" placeholder="Number">
+      <button id="updateButton" onclick="editRow()" disabled>Update</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- <script>
+    let rIndex = 1;
+
+    function populateModal(row) {
+      rIndex = row.rowIndex;
+      document.getElementById("fname").value = row.cells[0].textContent;
+      document.getElementById("lname").value = row.cells[1].textContent;
+      document.getElementById("country").value = row.cells[2].textContent;
+      document.getElementById("mNumber").value = row.cells[3].textContent;
+    }
+
+    function editRow() {
+      if (rIndex !== -1) {
+        const row = document.getElementById("table").rows[rIndex];
+        row.cells[0].textContent = document.getElementById("fname").value;
+        row.cells[1].textContent = document.getElementById("lname").value;
+        row.cells[2].textContent = document.getElementById("country").value;
+        row.cells[3].textContent = document.getElementById("mNumber").value;
+        closeModal();
+      }
+    }
+
+    function confirmDelete(row) {
+      console.log("function is working")
+      const confirmation = confirm("Are you sure you want to delete this row?");
+      if (confirmation) {
+        deleteRow(row);
+      }
+    }
+
+    function deleteRow(row) {
+      if (rIndex !== -1) {
+        document.getElementById("table").deleteRow(row.rowIndex);
+        closeModal();
+      }
+    }
+
+    function openModal() {
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+      rIndex = -1;
+    }
+
+    const updateButton = document.getElementById("updateButton");
+    const inputFields = document.querySelectorAll(".modal-content input");
+
+    inputFields.forEach(input => {
+      input.addEventListener("input", () => {
+        const isEmpty = Array.from(inputFields).some(input => input.value.trim() === "");
+        updateButton.disabled = isEmpty;
+      });
+    });
+
+
+    function addRow() {
+  const table = document.getElementById("table").getElementsByTagName("tbody")[0];
+  const newRow = table.insertRow(table.rows.length);
+  const cell1 = newRow.insertCell(0);
+  const cell2 = newRow.insertCell(1);
+  const cell3 = newRow.insertCell(2);
+  const cell4 = newRow.insertCell(3);
+  const cell5 = newRow.insertCell(4);
+
+  cell1.innerHTML = "First Name";
+  cell2.innerHTML = "Last Name";
+  cell3.innerHTML = "Country";
+  cell4.innerHTML = "Mobile Number";
+  cell5.innerHTML = '<button onclick="openModal(); populateModal(this.parentElement.parentElement)">Edit</button> <button onclick="confirmDelete(this.parentElement.parentElement)">Delete</button>';
+}
+
+  </script> -->
+  <script src="script.js"></script>
+</body>
+</html>
